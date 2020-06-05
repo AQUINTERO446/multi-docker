@@ -22,3 +22,17 @@ after_success:
     - docker push aquintero446/multi-nginx
     - docker push aquintero446/multi-server
     - docker push aquintero446/multi-worker
+
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "multi-docker-andres"
+    env: "MultiDocker-env"
+    bucket_name: "elasticbeanstalk-us-east-2-774154012305"
+    bucket_path: "multi-docker-andres"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+      
